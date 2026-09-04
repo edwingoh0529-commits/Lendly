@@ -1,4 +1,4 @@
-# What changed in the UI, and why
+# What changed in the UI, and why.
 
 ## The bug behind the uneven buttons
 

@@ -452,19 +452,19 @@ public class Repo {
     private Task<Void> writeBatch(BorrowRequest request, String newStatus,
                                   String itemId, String itemStatus,
                                   List<String> alsoReject) {
-        return db.runBatch(batch -> {
-            batch.update(db.collection(REQUESTS).document(request.getId()),
-                    "status", newStatus);
+        com.google.firebase.firestore.WriteBatch batch = db.batch();
+        batch.update(db.collection(REQUESTS).document(request.getId()),
+                "status", newStatus);
 
-            if (itemId != null && itemStatus != null) {
-                batch.update(db.collection(ITEMS).document(itemId), "status", itemStatus);
-            }
+        if (itemId != null && itemStatus != null) {
+            batch.update(db.collection(ITEMS).document(itemId), "status", itemStatus);
+        }
 
-            for (String otherId : alsoReject) {
-                batch.update(db.collection(REQUESTS).document(otherId),
-                        "status", BorrowRequest.REJECTED);
-            }
-        });
+        for (String otherId : alsoReject) {
+            batch.update(db.collection(REQUESTS).document(otherId),
+                    "status", BorrowRequest.REJECTED);
+        }
+        return batch.commit();
     }
 
     
@@ -497,13 +497,13 @@ public class Repo {
         DocumentReference reviewRef = db.collection(REVIEWS).document();
         DocumentReference userRef = db.collection(USERS).document(review.getRevieweeId());
 
-        return db.runBatch(batch -> {
-            batch.set(reviewRef, review);
-            Map<String, Object> bump = new HashMap<>();
-            bump.put("ratingTotal", FieldValue.increment(review.getRating()));
-            bump.put("ratingCount", FieldValue.increment(1));
-            batch.set(userRef, bump, SetOptions.merge());
-        });
+        com.google.firebase.firestore.WriteBatch batch = db.batch();
+        batch.set(reviewRef, review);
+        Map<String, Object> bump = new HashMap<>();
+        bump.put("ratingTotal", FieldValue.increment(review.getRating()));
+        bump.put("ratingCount", FieldValue.increment(1));
+        batch.set(userRef, bump, SetOptions.merge());
+        return batch.commit();
     }
 
     public void loadReviewsFor(String userId, @NonNull Result<List<Review>> cb) {

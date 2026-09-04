@@ -25,7 +25,7 @@ public class HomeFragment extends Fragment {
     
     private static final String[] CATEGORIES = {
             "All", "Electronics", "Study Materials", "Books",
-            "Sports Equipment", "Presentation Materials", "Formal Wear", "Other"
+            "Sports Equipment", "Presentation Materials", "Formal Wear", "Others"
     };
 
     private static final int[] CATEGORY_ICONS = {

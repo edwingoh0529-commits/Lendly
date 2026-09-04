@@ -260,7 +260,7 @@ public class EditItemFragment extends Fragment {
     private void setBusy(boolean busy) {
         progress.setVisibility(busy ? View.VISIBLE : View.GONE);
         btnSave.setEnabled(!busy);
-        btnSave.setText(busy ? "Saving..." : "Save item");
+        btnSave.setText(busy ? "Saving...." : "Save item");
     }
 
     private String text(TextInputEditText field) {

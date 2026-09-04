@@ -78,7 +78,7 @@ public class ItemListFragment extends Fragment {
 
     private String titleFor(String mode) {
         if (MODE_HISTORY.equals(mode)) return "My Borrows & Purchases";
-        if (MODE_ORDERS.equals(mode)) return "Requests on my items";
+        if (MODE_ORDERS.equals(mode)) return "Requests on My Items";
         return "Favourites";
     }
 

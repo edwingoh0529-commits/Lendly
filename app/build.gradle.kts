@@ -37,6 +37,7 @@ android {
 dependencies {
     // ---- AndroidX + Material ----
     implementation(libs.appcompat)
+    implementation(libs.firebase.database)
     implementation(libs.material)
     implementation(libs.constraintlayout)
     implementation(libs.activity.ktx)

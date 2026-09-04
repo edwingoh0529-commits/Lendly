@@ -27,7 +27,7 @@ public class ItemDetailFragment extends Fragment {
     private static final String ARG_ITEM_ID = "itemId";
 
     private static final String[] PAYMENT_METHODS = {
-            "Cash", "DuitNow", "Touch \u2018n Go eWallet", "Bank transfer"
+            "Cash", "DuitNow", "Touch \u2018n Go eWallet", "Bank Transfer"
     };
 
     private String itemId;

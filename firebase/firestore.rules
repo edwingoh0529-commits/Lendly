@@ -2,7 +2,7 @@ rules_version = '2';
 
 // Firestore security rules for Lendly
 // Updated to support authenticated application users
-
+//why am i here? why? why?
 service cloud.firestore {
   match /databases/{database}/documents {
 

@@ -1,16 +1,7 @@
 rules_version = '2';
 
-// =====================================================================
-// Lendly - Firestore security rules
-//
-// PASTE THIS INTO: Firebase Console -> Firestore Database -> Rules -> Publish
-//
-// Without these rules the app looks broken: lists stay empty and saves fail
-// silently, because Firestore's default rules deny every read and write.
-//
-// The rule of thumb used below: you must be logged in to see anything, and
-// you may only change data that belongs to you.
-// =====================================================================
+// Firestore security rules for Lendly
+// Updated to support authenticated application users.
 
 service cloud.firestore {
   match /databases/{database}/documents {

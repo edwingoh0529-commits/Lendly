@@ -1,6 +1,6 @@
 rules_version = '2';
 
-// Firestore security rules for Lendly
+// Firestore security rules for Lendly.
 // Updated to support authenticated application users.
 
 service cloud.firestore {

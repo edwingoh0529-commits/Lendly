@@ -1,4 +1,4 @@
-# Lendly — Setup Guide
+# Lendly — Setup Guide (Important)
 
 Group 5 · UCCD3223 Mobile Applications Development · Group Assignment 2
 

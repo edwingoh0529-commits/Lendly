@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Lendly</string>
+
+    <string name="search_hint">Search items…</string>
+    <string name="favorites">Favourites</string>
+    <string name="history">History</string>
+    <string name="orders">Orders</string>
+    <string name="categories_title">Categories</string>
+    <string name="being_let_go_title">Being Let Go</string>
+
+    <string name="nav_home">Home</string>
+    <string name="nav_messages">Messages</string>
+    <string name="nav_lends">Lends</string>
+    <string name="nav_notifications">Activity</string>
+    <string name="nav_profile">Profile</string>
+
+    <string name="tagline">Campus Lending &amp; Sharing</string>
+</resources>

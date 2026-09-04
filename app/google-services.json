@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "69270370262",
+    "project_id": "lendly-323fa",
+    "storage_bucket": "lendly-323fa.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:69270370262:android:9422727513c2f441491677",
+        "android_client_info": {
+          "package_name": "com.example.groupassignment2app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "69270370262-5qk3sqertdh5st34lnan0h4n0j1qrve9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.groupassignment2app",
+            "certificate_hash": "025f472c597b9602afd9ee8f203f01282ddc674a"
+          }
+        },
+        {
+          "client_id": "69270370262-a216g0puvh3ithohe16nc0lkidtcn23c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7DAvv8let8HUvZWwVoCYe5Li3bdGd6AI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "69270370262-a216g0puvh3ithohe16nc0lkidtcn23c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,127 @@
+rules_version = '2';
+
+// =====================================================================
+// Lendly - Firestore security rules
+//
+// PASTE THIS INTO: Firebase Console -> Firestore Database -> Rules -> Publish
+//
+// Without these rules the app looks broken: lists stay empty and saves fail
+// silently, because Firestore's default rules deny every read and write.
+//
+// The rule of thumb used below: you must be logged in to see anything, and
+// you may only change data that belongs to you.
+// =====================================================================
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Small helpers so the rules below read like sentences
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isMe(userId) {
+      return signedIn() && request.auth.uid == userId;
+    }
+
+    // -----------------------------------------------------------------
+    // users/{uid}
+    // Anyone logged in can read a profile (needed to show names and star
+    // ratings), but you can only edit your own.
+    //
+    // The extra "allow update" line is what lets submitReview() bump
+    // somebody else's ratingTotal / ratingCount. It ONLY permits changes to
+    // those two fields, so a student cannot rewrite another person's name.
+    // -----------------------------------------------------------------
+    match /users/{userId} {
+      allow read: if signedIn();
+      allow create, delete: if isMe(userId);
+      allow update: if isMe(userId)
+                    || (signedIn()
+                        && request.resource.data.diff(resource.data)
+                             .affectedKeys()
+                             .hasOnly(['ratingTotal', 'ratingCount']));
+
+      // users/{uid}/favorites/{itemId} - private to that student
+      match /favorites/{itemId} {
+        allow read, write: if isMe(userId);
+      }
+    }
+
+    // -----------------------------------------------------------------
+    // items/{itemId}
+    // Everyone logged in can browse the marketplace. Only the owner can
+    // edit or delete their listing.
+    //
+    // The second "allow update" clause lets a borrower's accept/return
+    // action flip the item's status field (AVAILABLE -> BORROWED -> back).
+    // Again it is limited to that single field.
+    // -----------------------------------------------------------------
+    match /items/{itemId} {
+      allow read: if signedIn();
+      allow create: if signedIn() && request.resource.data.ownerId == request.auth.uid;
+      allow update: if (signedIn() && resource.data.ownerId == request.auth.uid)
+                    || (signedIn()
+                        && request.resource.data.diff(resource.data)
+                             .affectedKeys()
+                             .hasOnly(['status']));
+      allow delete: if signedIn() && resource.data.ownerId == request.auth.uid;
+    }
+
+    // -----------------------------------------------------------------
+    // requests/{requestId}  (borrow and buy requests)
+    // Only the two people involved can see or change a request.
+    // -----------------------------------------------------------------
+    match /requests/{requestId} {
+      allow read: if signedIn()
+                  && (resource.data.borrowerId == request.auth.uid
+                      || resource.data.lenderId == request.auth.uid);
+
+      allow create: if signedIn()
+                    && request.resource.data.borrowerId == request.auth.uid
+                    && request.resource.data.status == 'PENDING';
+
+      allow update: if signedIn()
+                    && (resource.data.borrowerId == request.auth.uid
+                        || resource.data.lenderId == request.auth.uid);
+
+      allow delete: if false;   // keep the history, never delete
+    }
+
+    // -----------------------------------------------------------------
+    // reviews/{reviewId}
+    // Reviews are public so trust is visible, but you can only write one
+    // under your own name, and you can never edit or delete it afterwards.
+    // -----------------------------------------------------------------
+    match /reviews/{reviewId} {
+      allow read: if signedIn();
+      allow create: if signedIn()
+                    && request.resource.data.reviewerId == request.auth.uid
+                    && request.resource.data.revieweeId != request.auth.uid
+                    && request.resource.data.rating >= 1
+                    && request.resource.data.rating <= 5;
+      allow update, delete: if false;
+    }
+
+    // -----------------------------------------------------------------
+    // chats/{chatId} and its messages
+    // Only the two participants can read or write.
+    // -----------------------------------------------------------------
+    match /chats/{chatId} {
+      allow read: if signedIn() && request.auth.uid in resource.data.participantIds;
+      allow create: if signedIn() && request.auth.uid in request.resource.data.participantIds;
+      allow update: if signedIn() && request.auth.uid in request.resource.data.participantIds;
+
+      match /messages/{messageId} {
+        allow read: if signedIn()
+                    && request.auth.uid in
+                       get(/databases/$(database)/documents/chats/$(chatId)).data.participantIds;
+
+        allow create: if signedIn()
+                      && request.resource.data.senderId == request.auth.uid;
+
+        allow update, delete: if false;   // messages cannot be edited
+      }
+    }
+  }
+}

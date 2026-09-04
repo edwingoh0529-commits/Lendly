@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="28dp"
+            android:paddingTop="56dp"
+            android:paddingBottom="32dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Create your account"
+                android:textColor="@color/lendly_blue"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Borrow, lend and sell within your campus"
+                android:textColor="@color/grey_text"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/edtName"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="28dp"
+                android:autofillHints="name"
+                android:background="@drawable/bg_input_outline"
+                android:hint="Full name"
+                android:inputType="textPersonName"
+                android:paddingHorizontal="14dp" />
+
+            <EditText
+                android:id="@+id/edtStudentId"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_input_outline"
+                android:hint="Student ID (optional)"
+                android:inputType="number"
+                android:paddingHorizontal="14dp" />
+
+            <EditText
+                android:id="@+id/edtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="12dp"
+                android:autofillHints="emailAddress"
+                android:background="@drawable/bg_input_outline"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:paddingHorizontal="14dp" />
+
+            <EditText
+                android:id="@+id/edtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="12dp"
+                android:autofillHints="newPassword"
+                android:background="@drawable/bg_input_outline"
+                android:hint="Password (min 6 characters)"
+                android:inputType="textPassword"
+                android:paddingHorizontal="14dp" />
+
+            <EditText
+                android:id="@+id/edtConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="12dp"
+                android:autofillHints="newPassword"
+                android:background="@drawable/bg_input_outline"
+                android:hint="Confirm password"
+                android:inputType="textPassword"
+                android:paddingHorizontal="14dp" />
+
+            <Button
+                android:id="@+id/btnSignUp"
+                style="@style/Lendly.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Sign up"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtGoLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
+                android:padding="8dp"
+                android:text="Already have an account? Log in"
+                android:textColor="@color/lendly_blue"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <include layout="@layout/view_loading_overlay" />
+</FrameLayout>

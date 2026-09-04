@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/space_md"
+    android:layout_marginVertical="@dimen/space_sm"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="@dimen/card_corner"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/space_lg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtRequestItem"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="Item name"
+                android:textColor="@color/text_color_primary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtRequestStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_sm"
+                android:background="@drawable/bg_status_pill"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="@dimen/space_xs"
+                android:text="PENDING"
+                android:textColor="@color/status_pending"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtRequestPerson"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_sm"
+            android:text="From: a student"
+            android:textColor="@color/text_color_primary"
+            android:textSize="@dimen/text_label" />
+
+        <TextView
+            android:id="@+id/txtRequestDates"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="dates"
+            android:textColor="@color/grey_text"
+            android:textSize="@dimen/text_caption" />
+
+        <TextView
+            android:id="@+id/txtRequestMeetup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_sm"
+            android:background="?attr/selectableItemBackground"
+            android:drawablePadding="6dp"
+            android:paddingVertical="@dimen/space_xs"
+            android:text="Meet at ..."
+            android:textColor="@color/lendly_blue"
+            android:textSize="@dimen/text_label"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/txtRequestPayment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_xs"
+            android:text="Cash"
+            android:textColor="@color/grey_text"
+            android:textSize="@dimen/text_caption" />
+
+        <TextView
+            android:id="@+id/txtRequestMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_sm"
+            android:background="@drawable/bg_status_pill"
+            android:lineSpacingExtra="2dp"
+            android:padding="10dp"
+            android:text="message"
+            android:textColor="@color/text_color_primary"
+            android:textSize="@dimen/text_label"
+            android:textStyle="italic"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/layoutPrimaryActions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_md"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAccept"
+                style="@style/Lendly.Button.Card"
+                android:layout_width="0dp"
+                android:layout_marginEnd="@dimen/space_xs"
+                android:layout_weight="1"
+                android:text="Accept"
+                android:visibility="gone"
+                app:backgroundTint="@color/accept_green" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnReject"
+                style="@style/Lendly.Button.Card"
+                android:layout_width="0dp"
+                android:layout_marginStart="@dimen/space_xs"
+                android:layout_weight="1"
+                android:text="Reject"
+                android:visibility="gone"
+                app:backgroundTint="@color/reject_red" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMarkPaid"
+                style="@style/Lendly.Button.Card"
+                android:layout_width="0dp"
+                android:layout_marginEnd="@dimen/space_xs"
+                android:layout_weight="1"
+                android:text="Mark paid"
+                android:visibility="gone"
+                app:backgroundTint="@color/accept_green" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMarkReturned"
+                style="@style/Lendly.Button.Card"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Mark returned"
+                android:visibility="gone"
+                app:backgroundTint="@color/lendly_blue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutSecondaryActions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_sm"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRate"
+                style="@style/Lendly.Button.Card"
+                android:layout_width="0dp"
+                android:layout_marginEnd="@dimen/space_xs"
+                android:layout_weight="1"
+                android:text="Rate"
+                android:visibility="gone"
+                app:backgroundTint="@color/lendly_blue_light" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMessage"
+                style="@style/Lendly.Button.Card.Outlined"
+                android:layout_width="0dp"
+                android:layout_marginStart="@dimen/space_xs"
+                android:layout_weight="1"
+                android:text="Message"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

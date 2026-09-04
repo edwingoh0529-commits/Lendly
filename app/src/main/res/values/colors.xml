@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="lendly_blue">#002D56</color>
+    <color name="lendly_blue_dark">#001F3D</color>
+    <color name="lendly_blue_light">#1A4B7C</color>
+    <color name="dark_blue">#002D56</color>
+    <color name="primary_dark_blue">#002D56</color>
+
+    <color name="search_bar_bg">#F2F2F2</color>
+    <color name="category_circle_bg">#F4F6F8</color>
+    <color name="product_card_bg">#F4F6F8</color>
+    <color name="light_grey">#F1F3F5</color>
+    <color name="light_gray">#F1F3F5</color>
+    <color name="border_gray">#E1E5EA</color>
+    <color name="background_gray">#FAFAFA</color>
+
+    <color name="text_color_primary">#1A1A1A</color>
+    <color name="grey_text">#6B7280</color>
+    <color name="gray_text">#6B7280</color>
+    <color name="header_text_color">#FFFFFF</color>
+    <color name="search_icon_tint">#8E8E93</color>
+
+    <color name="nav_icon_tint">#002D56</color>
+    <color name="nav_icon_inactive">#9AA3AD</color>
+
+    <color name="unread_dot_color">#FF4B55</color>
+    <color name="chip_unselected_bg">#FFFFFF</color>
+    <color name="chip_unselected_stroke">#E0E0E0</color>
+    <color name="button_reject_bg">#E0E0E0</color>
+
+    <color name="bubble_received">#F1F3F5</color>
+    <color name="bubble_sent">#002D56</color>
+    <color name="chat_received">#F1F3F5</color>
+    <color name="chat_background">#FFFFFF</color>
+    <color name="chat_border">#E1E5EA</color>
+    <color name="chat_input_hint">#8E8E93</color>
+
+    <color name="status_pending">#B45309</color>
+    <color name="status_accepted">#15803D</color>
+    <color name="status_overdue">#B91C1C</color>
+    <color name="status_rejected">#6B7280</color>
+    <color name="status_done">#1A4B7C</color>
+
+    <color name="accept_green">#15803D</color>
+    <color name="reject_red">#B91C1C</color>
+
+</resources>

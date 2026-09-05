@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
-    private void signInWithGoogle() {
+    private void signInWithGoogle() { //Google sign in option
         setBusy(true, "Opening Google\u2026");
 
         googleSignIn.signIn(new GoogleSignInHelper.Callback() {
